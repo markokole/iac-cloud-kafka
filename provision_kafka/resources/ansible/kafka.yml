@@ -1,8 +1,9 @@
 ---
 - hosts: kafka_servers
-  #gather_facts: no
+  any_errors_fatal: true
+  gather_facts: no
   become: true
   roles:
-    - java
+    - prereq
     - zookeeper
     - kafka

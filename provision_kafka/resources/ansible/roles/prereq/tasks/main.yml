@@ -6,11 +6,11 @@
     - "{{ java.yum_package }}"
     - nc
 
-- name: Generate /etc/ssh/ RSA host key pair
+- name: Generate /tmp/id_rsa host key pair
   connection: local
-  command : "ssh-keygen -q -t rsa -f /tmp/id_rsa -C '' -N ''"
-  args:
-    creates: /tmp/id_rsa
+  openssh_keypair:
+    path: /tmp/id_rsa
+    force: True
 
 - name: Append to authorized_keys
   lineinfile:
